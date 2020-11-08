@@ -35,7 +35,19 @@ func (g *Generator) Generate(length int) []byte {
 }
 
 func (g *Generator) GenerateString(length int) string {
-	return string(g.Generate(length))
+	if length <= 0 {
+		return ""
+	}
+
+	rand.Seed(time.Now().UnixNano())
+
+	b := NewBuffer()
+	defer ReleaseBuffer(b)
+
+	for i := 0; i < length; i++ {
+		b.WriteByte(g.randByte())
+	}
+	return b.String()
 }
 
 func (g *Generator) options(opts ...Option) {

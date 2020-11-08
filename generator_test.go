@@ -31,14 +31,18 @@ func TestGenerateString(t *testing.T) {
 
 func BenchmarkGenerate(b *testing.B) {
 	g := New()
-	for i := 0; i < b.N; i++ {
-		g.Generate(30)
-	}
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			g.Generate(100)
+		}
+	})
 }
 
 func BenchmarkGenerateString(b *testing.B) {
 	g := New()
-	for i := 0; i < b.N; i++ {
-		g.GenerateString(30)
-	}
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			g.GenerateString(100)
+		}
+	})
 }
