@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-var DefaultOptions = []Option{WithNumbers(), WithNumbers()}
+var DefaultOptions = []Option{WithNumbers(), WithLetters()}
 
 type Generator struct {
 	chars bytes.Buffer
