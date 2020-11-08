@@ -1,7 +1,6 @@
 package gopass
 
 import (
-	"regexp"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -39,8 +38,7 @@ func TestOptions(t *testing.T) {
 			g := &Generator{}
 			g.options(tt.optFunc())
 
-			matched, _ := regexp.Match(tt.pattern, g.chars.Bytes())
-			assert.True(t, matched)
+			assert.Regexp(t, tt.pattern, g.chars.String())
 		})
 	}
 
@@ -48,7 +46,6 @@ func TestOptions(t *testing.T) {
 		g := &Generator{}
 		g.options(WithChars("abc123!@#"))
 
-		matched, _ := regexp.Match(`^[123abc!@#]+$`, g.chars.Bytes())
-		assert.True(t, matched)
+		assert.Regexp(t, `^[123abc!@#]+$`, g.chars.String())
 	})
 }
