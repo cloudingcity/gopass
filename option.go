@@ -40,8 +40,14 @@ func WithSymbols() Option {
 	}
 }
 
-func WithChars(s string) Option {
+func WithString(s string) Option {
 	return func(g *Generator) {
 		g.chars.WriteString(s)
+	}
+}
+
+func WithBytes(b []byte) Option {
+	return func(g *Generator) {
+		g.chars.Write(b)
 	}
 }

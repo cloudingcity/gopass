@@ -42,9 +42,16 @@ func TestOptions(t *testing.T) {
 		})
 	}
 
-	t.Run("with chars", func(t *testing.T) {
+	t.Run("with string", func(t *testing.T) {
 		g := &Generator{}
-		g.options(WithChars("abc123!@#"))
+		g.options(WithString("abc123!@#"))
+
+		assert.Regexp(t, `^[123abc!@#]+$`, g.chars.String())
+	})
+
+	t.Run("with bytes", func(t *testing.T) {
+		g := &Generator{}
+		g.options(WithBytes([]byte("abc123!@#")))
 
 		assert.Regexp(t, `^[123abc!@#]+$`, g.chars.String())
 	})
