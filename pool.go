@@ -15,8 +15,7 @@ func NewBuffer() *bytes.Buffer {
 	return v.(*bytes.Buffer)
 }
 
-func ReleaseBuffer(b *bytes.Buffer) *bytes.Buffer {
+func ReleaseBuffer(b *bytes.Buffer) {
 	b.Reset()
 	bufPool.Put(b)
-	return b
 }
