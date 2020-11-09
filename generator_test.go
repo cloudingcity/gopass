@@ -9,7 +9,7 @@ import (
 func TestGenerate(t *testing.T) {
 	g := New()
 
-	t.Run("default", func(t *testing.T) {
+	t.Run("success", func(t *testing.T) {
 		got := g.Generate(10)
 		assert.Len(t, got, 10)
 		assert.Regexp(t, "^[0-9a-zA-z]+$", string(got))
@@ -24,7 +24,7 @@ func TestGenerate(t *testing.T) {
 func TestGenerateString(t *testing.T) {
 	g := New()
 
-	t.Run("default", func(t *testing.T) {
+	t.Run("success", func(t *testing.T) {
 		got := g.GenerateString(10)
 		assert.Len(t, got, 10)
 		assert.Regexp(t, "^[0-9a-zA-z]+$", got)
