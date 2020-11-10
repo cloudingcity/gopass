@@ -15,8 +15,7 @@ package main
 import "github.com/cloudingcity/gopass"
 
 func main() {
-	pass := gopass.New()
-	pass.GenerateString(20) // vJd3NRrCImrSQf3M1h3A
+	gopass.GenerateString(20) // vJd3NRrCImrSQf3M1h3A
 }
 ```
 
@@ -25,28 +24,32 @@ func main() {
 Generate string contains letters and numbers with the given length.
 
 ```go
-pass := gopass.New()
-pass.GenerateString(20) // vJd3NRrCImrSQf3M1h3A
+gopass.GenerateString(20) // vJd3NRrCImrSQf3M1h3A
 ```
 
 Generate with options.
 
 ```go
-pass := gopass.New(gopass.Numbers(), gopass.UpperCase())
-pass.GenerateString(20) // AMQPZJ5OUGW4WVI8GB3C
+gopass.With(gopass.Numbers(), gopass.UpperCase())
+gopass.GenerateString(20) // AMQPZJ5OUGW4WVI8GB3C
 ```
 
 Generate []byte
 ```go
-pass := gopass.New()
-pass.Generate(20) // [90 55 81 120 104 70 114 105 101 54]
+gopass.Generate(20) // [90 55 81 120 104 70 114 105 101 54]
 ```
 
 Customize characters.
 
 ```go
-pass := gopass.New(gopass.String("123"), gopass.Bytes([]byte("ABC")))
-pass.GenerateString(10) // 31AABCBB22
+gopass.With(gopass.String("123"), gopass.Bytes([]byte("ABC")))
+gopass.GenerateString(10) // 31AABCBB22
+```
+
+Create your own gopass instance.
+```go
+pass := gopass.New(gopass.Numbers(), gopass.UpperCase())
+pass.GenerateString(20) // AMQPZJ5OUGW4WVI8GB3C
 ```
 
 ## Benchmarks
