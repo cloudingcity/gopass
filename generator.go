@@ -14,7 +14,7 @@ type Generator struct {
 
 func New(opts ...Option) *Generator {
 	g := &Generator{}
-	g.options(opts...)
+	g.With(opts...)
 	return g
 }
 
@@ -44,7 +44,9 @@ func (g *Generator) GenerateString(length int) string {
 	return buf.String()
 }
 
-func (g *Generator) options(opts ...Option) {
+func (g *Generator) With(opts ...Option) {
+	g.chars.Reset()
+
 	if len(opts) == 0 {
 		opts = DefaultOptions
 	}

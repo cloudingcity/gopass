@@ -36,7 +36,7 @@ func TestOptions(t *testing.T) {
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
 			g := &Generator{}
-			g.options(tt.optFunc())
+			g.With(tt.optFunc())
 
 			assert.Regexp(t, tt.pattern, g.chars.String())
 		})
@@ -44,14 +44,14 @@ func TestOptions(t *testing.T) {
 
 	t.Run("with string", func(t *testing.T) {
 		g := &Generator{}
-		g.options(WithString("abc123!@#"))
+		g.With(WithString("abc123!@#"))
 
 		assert.Regexp(t, `^[123abc!@#]+$`, g.chars.String())
 	})
 
 	t.Run("with bytes", func(t *testing.T) {
 		g := &Generator{}
-		g.options(WithBytes([]byte("abc123!@#")))
+		g.With(WithBytes([]byte("abc123!@#")))
 
 		assert.Regexp(t, `^[123abc!@#]+$`, g.chars.String())
 	})
