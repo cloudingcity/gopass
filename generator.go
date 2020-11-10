@@ -6,7 +6,7 @@ import (
 	"math/big"
 )
 
-var DefaultOptions = []Option{WithNumbers(), WithLetters()}
+var DefaultOptions = []Option{Numbers(), Letters()}
 
 type Generator struct {
 	chars bytes.Buffer

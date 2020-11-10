@@ -13,23 +13,23 @@ func TestOptions(t *testing.T) {
 	}{
 		"with numbers": {
 			pattern: `^[0-9]+$`,
-			optFunc: WithNumbers,
+			optFunc: Numbers,
 		},
 		"with lower case": {
 			pattern: `^[a-z]+$`,
-			optFunc: WithLowerCase,
+			optFunc: LowerCase,
 		},
 		"with upper case": {
 			pattern: `^[A-Z]+$`,
-			optFunc: WithUpperCase,
+			optFunc: UpperCase,
 		},
 		"with letters": {
 			pattern: `^[a-zA-Z]+$`,
-			optFunc: WithLetters,
+			optFunc: Letters,
 		},
 		"with symbols": {
 			pattern: `^[[~!@#$%^&*()_+{}|:<>?,./\]]+$`,
-			optFunc: WithSymbols,
+			optFunc: Symbols,
 		},
 	}
 
@@ -44,14 +44,14 @@ func TestOptions(t *testing.T) {
 
 	t.Run("with string", func(t *testing.T) {
 		g := &Generator{}
-		g.With(WithString("abc123!@#"))
+		g.With(String("abc123!@#"))
 
 		assert.Regexp(t, `^[123abc!@#]+$`, g.chars.String())
 	})
 
 	t.Run("with bytes", func(t *testing.T) {
 		g := &Generator{}
-		g.With(WithBytes([]byte("abc123!@#")))
+		g.With(Bytes([]byte("abc123!@#")))
 
 		assert.Regexp(t, `^[123abc!@#]+$`, g.chars.String())
 	})

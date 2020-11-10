@@ -10,43 +10,43 @@ const (
 
 type Option func(*Generator)
 
-func WithNumbers() Option {
+func Numbers() Option {
 	return func(g *Generator) {
 		g.chars.WriteString(numbers)
 	}
 }
 
-func WithUpperCase() Option {
+func UpperCase() Option {
 	return func(g *Generator) {
 		g.chars.WriteString(upperCase)
 	}
 }
 
-func WithLowerCase() Option {
+func LowerCase() Option {
 	return func(g *Generator) {
 		g.chars.WriteString(lowerCase)
 	}
 }
 
-func WithLetters() Option {
+func Letters() Option {
 	return func(g *Generator) {
 		g.chars.WriteString(letters)
 	}
 }
 
-func WithSymbols() Option {
+func Symbols() Option {
 	return func(g *Generator) {
 		g.chars.WriteString(symbols)
 	}
 }
 
-func WithString(s string) Option {
+func String(s string) Option {
 	return func(g *Generator) {
 		g.chars.WriteString(s)
 	}
 }
 
-func WithBytes(b []byte) Option {
+func Bytes(b []byte) Option {
 	return func(g *Generator) {
 		g.chars.Write(b)
 	}

@@ -32,7 +32,7 @@ pass.GenerateString(20) // vJd3NRrCImrSQf3M1h3A
 Generate with options.
 
 ```go
-pass := gopass.New(gopass.WithNumbers(), gopass.WithUpperCase())
+pass := gopass.New(gopass.Numbers(), gopass.UpperCase())
 pass.GenerateString(20) // AMQPZJ5OUGW4WVI8GB3C
 ```
 
@@ -45,7 +45,7 @@ pass.Generate(20) // [90 55 81 120 104 70 114 105 101 54]
 Customize characters.
 
 ```go
-pass := gopass.New(gopass.WithString("123"), gopass.WithBytes([]byte("ABC")))
+pass := gopass.New(gopass.String("123"), gopass.Bytes([]byte("ABC")))
 pass.GenerateString(10) // 31AABCBB22
 ```
 
