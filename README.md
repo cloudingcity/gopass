@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/cloudingcity/gopass/branch/main/graph/badge.svg)](https://codecov.io/gh/cloudingcity/gopass)
 [![Go Report Card](https://goreportcard.com/badge/github.com/cloudingcity/gopass)](https://goreportcard.com/report/github.com/cloudingcity/gopass)
 
-:key: Gopass is a thread-safe random password generator Go library and zero memory allocation.
+:key: Gopass is a cryptographically secure random password generator Go library.
 
 ## QuickStart
 
@@ -18,14 +18,6 @@ func main() {
 	pass := gopass.New()
 	pass.GenerateString(20) // vJd3NRrCImrSQf3M1h3A
 }
-```
-
-## Benchmarks
-
-```console
-$ GOMAXPROCS=4 go test -bench=Generate -benchmem -benchtime=10s
-BenchmarkGenerate-4               613816             22660 ns/op               0 B/op          0 allocs/op
-BenchmarkGenerateString-4         565225             22211 ns/op             112 B/op          1 allocs/op
 ```
 
 ## Examples
@@ -55,4 +47,12 @@ Customize characters.
 ```go
 pass := gopass.New(gopass.WithString("123"), gopass.WithBytes([]byte("ABC")))
 pass.GenerateString(10) // 31AABCBB22
+```
+
+## Benchmarks
+
+```console
+$ GOMAXPROCS=4 go test -bench=Generate -benchmem -benchtime=3s
+BenchmarkGenerate-4               146948             25280 ns/op            4808 B/op        301 allocs/op
+BenchmarkGenerateString-4         167050             25397 ns/op            4920 B/op        302 allocs/op
 ```

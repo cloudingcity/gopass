@@ -2,8 +2,8 @@ package gopass
 
 import (
 	"bytes"
-	"math/rand"
-	"time"
+	"crypto/rand"
+	"math/big"
 )
 
 var DefaultOptions = []Option{WithNumbers(), WithLetters()}
@@ -54,9 +54,9 @@ func (g *Generator) options(opts ...Option) {
 }
 
 func (g *Generator) generate(buf *bytes.Buffer, length int) {
-	rand.Seed(time.Now().UnixNano())
-
+	max := big.NewInt(int64(g.chars.Len()))
 	for i := 0; i < length; i++ {
-		buf.WriteByte(g.chars.Bytes()[rand.Intn(g.chars.Len())])
+		n, _ := rand.Int(rand.Reader, max)
+		buf.WriteByte(g.chars.Bytes()[n.Int64()])
 	}
 }
