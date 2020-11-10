@@ -23,12 +23,12 @@ func (g *Generator) Generate(length int) []byte {
 		return nil
 	}
 
-	b := NewBuffer()
-	defer ReleaseBuffer(b)
+	buf := NewBuffer()
+	defer ReleaseBuffer(buf)
 
-	g.generate(b, length)
+	g.generate(buf, length)
 
-	return b.Bytes()
+	return buf.Bytes()
 }
 
 func (g *Generator) GenerateString(length int) string {
@@ -36,12 +36,12 @@ func (g *Generator) GenerateString(length int) string {
 		return ""
 	}
 
-	b := NewBuffer()
-	defer ReleaseBuffer(b)
+	buf := NewBuffer()
+	defer ReleaseBuffer(buf)
 
-	g.generate(b, length)
+	g.generate(buf, length)
 
-	return b.String()
+	return buf.String()
 }
 
 func (g *Generator) options(opts ...Option) {
@@ -53,10 +53,10 @@ func (g *Generator) options(opts ...Option) {
 	}
 }
 
-func (g *Generator) generate(b *bytes.Buffer, length int) {
+func (g *Generator) generate(buf *bytes.Buffer, length int) {
 	rand.Seed(time.Now().UnixNano())
 
 	for i := 0; i < length; i++ {
-		b.WriteByte(g.chars.Bytes()[rand.Intn(g.chars.Len())])
+		buf.WriteByte(g.chars.Bytes()[rand.Intn(g.chars.Len())])
 	}
 }
