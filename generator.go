@@ -23,8 +23,8 @@ func (g *Generator) Generate(length int) []byte {
 		return nil
 	}
 
-	buf := NewBuffer()
-	defer ReleaseBuffer(buf)
+	buf := newBuffer()
+	defer releaseBuffer(buf)
 
 	g.generate(buf, length)
 
@@ -36,8 +36,8 @@ func (g *Generator) GenerateString(length int) string {
 		return ""
 	}
 
-	buf := NewBuffer()
-	defer ReleaseBuffer(buf)
+	buf := newBuffer()
+	defer releaseBuffer(buf)
 
 	g.generate(buf, length)
 

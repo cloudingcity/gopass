@@ -7,7 +7,7 @@ import (
 
 var bufPool sync.Pool
 
-func NewBuffer() *bytes.Buffer {
+func newBuffer() *bytes.Buffer {
 	v := bufPool.Get()
 	if v == nil {
 		return &bytes.Buffer{}
@@ -15,7 +15,7 @@ func NewBuffer() *bytes.Buffer {
 	return v.(*bytes.Buffer)
 }
 
-func ReleaseBuffer(b *bytes.Buffer) {
+func releaseBuffer(b *bytes.Buffer) {
 	b.Reset()
 	bufPool.Put(b)
 }
