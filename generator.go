@@ -12,7 +12,7 @@ type Generator struct {
 	chars bytes.Buffer
 }
 
-func New(opts ...Option) *Generator {
+func New(opts ...Option) Gopass {
 	g := &Generator{}
 	g.With(opts...)
 	return g

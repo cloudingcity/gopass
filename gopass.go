@@ -1,10 +1,16 @@
 package gopass
 
-var g *Generator
-
 func init() {
 	g = New()
 }
+
+type Gopass interface {
+	Generate(length int) []byte
+	GenerateString(length int) string
+	With(opts ...Option)
+}
+
+var g Gopass
 
 func Generate(length int) []byte {
 	return g.Generate(length)
