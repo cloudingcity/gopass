@@ -23,6 +23,8 @@ func main() {
 
 Generate string contains letters and numbers with the given length.
 
+> Letters and numbers is the default option.
+
 ```go
 gopass.GenerateString(20) // vJd3NRrCImrSQf3M1h3A
 ```
@@ -30,8 +32,8 @@ gopass.GenerateString(20) // vJd3NRrCImrSQf3M1h3A
 Generate with options.
 
 ```go
-gopass.With(gopass.Numbers(), gopass.UpperCase())
-gopass.GenerateString(20) // AMQPZJ5OUGW4WVI8GB3C
+gopass.With(gopass.Numbers(), gopass.UpperCase(), gopass.Symbols())
+gopass.GenerateString(20) // ^34J)GV.AE,@KA?+~MPG
 ```
 
 Generate []byte
