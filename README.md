@@ -19,6 +19,12 @@ func main() {
 }
 ```
 
+## Install
+
+```console
+go get -u github.com/cloudingcity/gopass
+```
+
 ## Examples
 
 Generate string contains letters and numbers with the given length.
